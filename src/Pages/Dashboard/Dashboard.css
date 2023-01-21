@@ -1,0 +1,6 @@
+.dashboard-main-page-root {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(236, 238, 240);
+}
