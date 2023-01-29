@@ -1,35 +1,60 @@
 import React from 'react'
 
 import LogoComponent from '../LogoComponent/LogoComponent'
+import SearchBarComponent from '../SearchBarComponent/SearchBarComponent'
 
-import {Grid} from '@mui/material'
+import {Grid, Avatar, IconButton} from '@mui/material'
+import MenuIcon from "@mui/icons-material/Menu"
+import SettingsIcon from "@mui/icons-material/Settings"
 
 import './Topbar.css'
 
 const Topbar = () => {
     const renderBarLeftContainer = () => {
         return (
-            <Grid item xs = {12} sm = {12} md = {3}>
-                <LogoComponent textColor = "text.secondary" position = "start" />
-                <div className = ''></div>
+            <Grid item xs = {6} sm = {3} md = {2}>
+                <div className = 'top-bar-container'>
+                    <LogoComponent textColor = "text.secondary" position = "start" />
+                    <IconButton color = "primary" aria-label = "menu" component = "label">
+                        <Avatar variant = "rounded" sx = {{width: "30px", height: "30px", backgroundColor: "rgba(255, 255, 255, 0.1)"}}>
+                            <MenuIcon />
+                        </Avatar>
+                    </IconButton>
+                </div>
             </Grid>
         )
     }
 
     const renderBarRightContainer = () => {
         return (
-            <Grid item xs = {12} sm = {12} md = {9}>
-
+            <Grid item xs = {6} sm = {9} md = {10}>
+                <div className = 'top-bar-container'>
+                    <SearchBarComponent placeholder = "Search" xs = 'none' />
+                    <div className = 'setting-container'>
+                        <div className = 'settings-icon'>
+                            <SettingsIcon />
+                        </div>
+                        <div className = 'profile-icon'>
+                            <Avatar 
+                                alt = "user-profile-img" 
+                                src = "https://berrydashboard.io/static/media/user-round.13b5a31bebd2cc6016d6db2cac8e92d1.svg" 
+                                sx = {{width: "35px", height: "35px"}}
+                            />
+                        </div>
+                    </div>
+                </div>
             </Grid>
         )
     }
 
     return (
         <div className = 'top-bar-compo-root nav'>
-            <Grid container spacing = {2}>
-                { renderBarLeftContainer() }
-                { renderBarRightContainer() }
-            </Grid>
+            <div className = 'top-bar-compo-container'>
+                <Grid container spacing = {1}>
+                    { renderBarLeftContainer() }
+                    { renderBarRightContainer() }
+                </Grid>
+            </div>
             <style>{`
                 .nav{
                     background: rgba(75, 78, 95, 1);
