@@ -12,7 +12,7 @@ import './Topbar.css'
 const Topbar = () => {
     const renderBarLeftContainer = () => {
         return (
-            <Grid item xs = {6} sm = {3} md = {2}>
+            <Grid item xs = {4} sm = {4} md = {2}>
                 <div className = 'top-bar-container'>
                     <LogoComponent textColor = "text.secondary" position = "start" />
                     <IconButton color = "primary" aria-label = "menu" component = "label">
@@ -27,9 +27,10 @@ const Topbar = () => {
 
     const renderBarRightContainer = () => {
         return (
-            <Grid item xs = {6} sm = {9} md = {10}>
+            <Grid item xs = {8} sm = {8} md = {10}>
                 <div className = 'top-bar-container'>
                     <SearchBarComponent placeholder = "Search" xs = 'none' />
+                    <div/>
                     <div className = 'setting-container'>
                         <div className = 'settings-icon'>
                             <SettingsIcon />
