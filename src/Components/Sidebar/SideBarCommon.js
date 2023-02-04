@@ -11,7 +11,7 @@ import PeopleIcon from '@mui/icons-material/People'
 
 import './Sidebar.css'
 
-const SideBarCommon = ({sideBarLinks, selectedLinkIndex, handleSideBarLinkOnClick}) => {
+const SideBarCommon = ({sideBarLinks, selectedLinkIndex, selectedSubLinkIndex, handleSideBarLinkOnClick, handleSubLinkOnClick}) => {
     const iconStyle = {width: "20px", height: "20px", color: "#515A5A"}
 
     const ICONS = {
@@ -29,7 +29,10 @@ const SideBarCommon = ({sideBarLinks, selectedLinkIndex, handleSideBarLinkOnClic
             link = {i.label} 
             selected = {i.index === selectedLinkIndex}
             index = {i.index}
+            selectedSubIndex = {selectedSubLinkIndex}
+            subLinks = {i.subLinks}
             handleSideBarLinkOnClick = {handleSideBarLinkOnClick}
+            handleSubLinkOnClick = {handleSubLinkOnClick}
         />
     )
 

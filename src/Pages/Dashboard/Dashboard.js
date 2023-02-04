@@ -11,23 +11,28 @@ import './Dashboard.css'
 class Dashboard extends Component {
     state = {
         openMobileMenu: false,
-        selectedLinkIndex: 0
+        selectedLinkIndex: 0,
+        selectedSubLinkIndex: 0
     }
 
     sideBarLinks = { 
         "General": [
-            {index: 0, label: "Product"},
-            {index: 1, label: "Analytics"},
-            {index: 2, label: "E-Commerce"}
+            {index: 0, label: "Product", subLinks: [{index: 0, label: "Products"}, {index: 1, label: "List"}, {index: 2, label: "Create"}]},
+            {index: 1, label: "Analytics", subLinks: []},
+            {index: 2, label: "E-Commerce", subLinks: []}
         ],
         "Management": [
-            {index: 3, label: "Profile"},
-            {index: 4, label: "Customer"}
+            {index: 3, label: "Profile", subLinks: []},
+            {index: 4, label: "Customer", subLinks: []}
         ]
     }
 
     handleLogOut = () => {
 
+    }
+
+    handleSubLinkOnClick = (index) => {
+        this.setState({ selectedSubLinkIndex: index })
     }
 
     handleSideBarLinkOnClick = (index) => {
@@ -39,24 +44,30 @@ class Dashboard extends Component {
     }
 
     renderSideBar = () => {
+        const {selectedLinkIndex, selectedSubLinkIndex} = this.state
         return (
             <Sidebar 
                 sideBarLinks = {this.sideBarLinks}
-                selectedLinkIndex = {this.state.selectedLinkIndex}
+                selectedLinkIndex = {selectedLinkIndex}
+                selectedSubLinkIndex = {selectedSubLinkIndex}
                 handleSideBarLinkOnClick = {this.handleSideBarLinkOnClick}
+                handleSubLinkOnClick = {this.handleSubLinkOnClick}
             />
         )
     }
 
     renderMobileMenu = () => {
+        const {openMobileMenu, selectedLinkIndex, selectedSubLinkIndex} = this.state
         return (
             <MobileSideMenu 
-                open = {this.state.openMobileMenu} 
+                open = {openMobileMenu} 
                 sideBarLinks = {this.sideBarLinks}
-                selectedLinkIndex = {this.state.selectedLinkIndex}
+                selectedLinkIndex = {selectedLinkIndex}
+                selectedSubLinkIndex = {selectedSubLinkIndex}
                 handleSideBarLinkOnClick = {this.handleSideBarLinkOnClick}
                 handleDrawer = {this.handleMobileMenuOnClick}
                 handleLogOut = {this.handleLogOut}
+                handleSubLinkOnClick = {this.handleSubLinkOnClick}
             />
         )
     }
