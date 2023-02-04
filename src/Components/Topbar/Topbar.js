@@ -9,13 +9,13 @@ import SettingsIcon from "@mui/icons-material/Settings"
 
 import './Topbar.css'
 
-const Topbar = () => {
+const Topbar = ({handleMobileMenuOnClick}) => {
     const renderBarLeftContainer = () => {
         return (
             <Grid item xs = {4} sm = {4} md = {2}>
                 <div className = 'top-bar-container'>
                     <LogoComponent textColor = "text.secondary" position = "start" />
-                    <IconButton color = "primary" aria-label = "menu" component = "label">
+                    <IconButton color = "primary" aria-label = "menu" component = "label" sx = {{marginLeft: "15px"}} onClick = {handleMobileMenuOnClick}>
                         <Avatar variant = "rounded" sx = {{width: "30px", height: "30px", backgroundColor: "rgba(255, 255, 255, 0.1)"}}>
                             <MenuIcon />
                         </Avatar>

@@ -9,11 +9,39 @@ import {Grid} from '@mui/material'
 import './Dashboard.css'
 
 class Dashboard extends Component {
+    state = {
+        openMobileMenu: false
+    }
+
+    handleLogOut = () => {
+
+    }
+
+    handleMobileMenuOnClick = () => {
+        this.setState ({
+            openMobileMenu: !this.state.openMobileMenu
+        })
+    }
+
+    renderMobileMenu = () => {
+        return (
+            <MobileSideMenu 
+                open = {this.state.openMobileMenu} 
+                handleDrawer = {this.handleMobileMenuOnClick}
+                handleLogOut = {this.handleLogOut}
+            />
+        )
+    }
+
+    renderTopBar = () => (
+        <Topbar handleMobileMenuOnClick = {this.handleMobileMenuOnClick} />
+    )
+
     render() {
         return (
             <div className = 'dashboard-main-page-root'>
-                <Topbar/>
-                <MobileSideMenu open = {false} />
+                { this.renderTopBar() }
+                { this.renderMobileMenu() }
                 <Grid container spacing = {1}>
                     <Grid item xs = {0} sm = {3} md = {2} sx = {{display: {xs: 'none', md: 'block'}}}>
                         <Sidebar />
