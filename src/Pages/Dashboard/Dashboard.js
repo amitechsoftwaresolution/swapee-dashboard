@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Topbar from '../../Components/Topbar/Topbar'
 import Sidebar from '../../Components/Sidebar/Sidebar'
+import MobileSideMenu from '../../Components/Sidebar/MobileSideMenu'
 
 import {Grid} from '@mui/material'
 
@@ -12,6 +13,7 @@ class Dashboard extends Component {
         return (
             <div className = 'dashboard-main-page-root'>
                 <Topbar/>
+                <MobileSideMenu open = {false} />
                 <Grid container spacing = {1}>
                     <Grid item xs = {0} sm = {3} md = {2} sx = {{display: {xs: 'none', md: 'block'}}}>
                         <Sidebar />
