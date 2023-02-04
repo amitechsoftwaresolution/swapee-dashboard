@@ -6,7 +6,7 @@ import {Box, List, Divider, ListItem} from '@mui/material'
 
 import './Sidebar.css'
 
-const Sidebar = () => {
+const Sidebar = ({sideBarLinks, selectedLinkIndex, handleSideBarLinkOnClick}) => {
     const renderFooter = () => (
         <List>
             <Divider sx = {{backgroundColor: "rgba(255, 255, 255, 0.4)", marginTop: "5px", marginBottom: "10px", m: "7px"}}/>
@@ -39,7 +39,11 @@ const Sidebar = () => {
             }} 
             role = "presentation"
             >
-                <SideBarCommon />
+                <SideBarCommon 
+                    sideBarLinks = {sideBarLinks} 
+                    selectedLinkIndex = {selectedLinkIndex} 
+                    handleSideBarLinkOnClick = {handleSideBarLinkOnClick}
+                />
                 { renderFooter() }
             </Box>
         </div>

@@ -11,8 +11,27 @@ import PeopleIcon from '@mui/icons-material/People'
 
 import './Sidebar.css'
 
-const SideBarCommon = () => {
+const SideBarCommon = ({sideBarLinks, selectedLinkIndex, handleSideBarLinkOnClick}) => {
     const iconStyle = {width: "20px", height: "20px", color: "#515A5A"}
+
+    const ICONS = {
+        "Product" : <InventoryIcon sx = {iconStyle}/>,
+        "Analytics": <AutoGraphIcon sx = {iconStyle}/>,
+        "E-Commerce": <CategoryIcon sx = {iconStyle}/>,
+        "Profile": <AssignmentIndIcon sx = {iconStyle}/>,
+        "Customer": <PeopleIcon sx = {iconStyle}/>
+    }
+
+    const renderSideBarLink = (i, idx) => (
+        <SideBarLink 
+            key = {idx}
+            icon = {ICONS[i.label]} 
+            link = {i.label} 
+            selected = {i.index === selectedLinkIndex}
+            index = {i.index}
+            handleSideBarLinkOnClick = {handleSideBarLinkOnClick}
+        />
+    )
 
     const renderInfoContainer = () => {
         return (
@@ -38,12 +57,17 @@ const SideBarCommon = () => {
         return (
             <div className = 'side-bar-links-container-root'>
                 <span className = 'side-bar-links-container-head'>General</span>
-                <SideBarLink icon = {<InventoryIcon sx = {iconStyle}/>} link = "Product" selected = {true}/>
-                <SideBarLink icon = {<AutoGraphIcon sx = {iconStyle}/>} link = "Analytics" selected = {false}/>
-                <SideBarLink icon = {<CategoryIcon sx = {iconStyle}/>} link = "E-Commerce" selected = {false}/>
+                {
+                    sideBarLinks && sideBarLinks["General"] && sideBarLinks["General"].map((i, idx) => {
+                        return renderSideBarLink(i, idx)
+                    })
+                }
                 <span className = 'side-bar-links-container-head'>Management</span>
-                <SideBarLink icon = {<AssignmentIndIcon sx = {iconStyle}/>} link = "Profile" selected = {false}/>
-                <SideBarLink icon = {<PeopleIcon sx = {iconStyle}/>} link = "Customer" selected = {false}/>
+                {
+                    sideBarLinks && sideBarLinks["Management"] && sideBarLinks["Management"].map((i, idx) => {
+                        return renderSideBarLink(i, idx)
+                    })
+                }
             </div>
         )
     }

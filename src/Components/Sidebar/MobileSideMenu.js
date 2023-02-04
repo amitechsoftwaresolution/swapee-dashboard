@@ -7,7 +7,7 @@ import {Box, Drawer, List, Divider, ListItem} from '@mui/material'
 
 import './Sidebar.css'
 
-const MobileSideMenu = ({open, handleDrawer, handleLogOut}) => {
+const MobileSideMenu = ({open, sideBarLinks, selectedLinkIndex, handleSideBarLinkOnClick, handleDrawer, handleLogOut}) => {
 
     const renderLoggedUserFooter = () => (
         <List>
@@ -29,7 +29,11 @@ const MobileSideMenu = ({open, handleDrawer, handleLogOut}) => {
             }} 
             role = "presentation"
         >
-            <SideBarCommon />
+            <SideBarCommon 
+                sideBarLinks = {sideBarLinks} 
+                selectedLinkIndex = {selectedLinkIndex} 
+                handleSideBarLinkOnClick = {handleSideBarLinkOnClick}
+            />
             { renderLoggedUserFooter() }
         </Box>
     )
