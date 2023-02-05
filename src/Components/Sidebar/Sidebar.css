@@ -264,7 +264,7 @@
 }
 
 .sub-link-dot-span-selected {
-    background-color: rgb(0, 171, 85);
+    background-color: #31e2f2;
     transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     transform: scale(2);
 }
@@ -294,7 +294,7 @@
 }
 
 .side-bar-compo-root::-webkit-scrollbar {
-    width: 5px;
+    width: 2px;
 }
   
 .side-bar-compo-root::-webkit-scrollbar-track {
@@ -302,6 +302,6 @@
 }
   
 .side-bar-compo-root::-webkit-scrollbar-thumb {
-    background-color: rgb(21, 67, 96, 0.4);
+    background-color: rgba(214, 212, 212, 0.4);
     border-radius: 15px;
 }

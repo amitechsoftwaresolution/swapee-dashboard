@@ -4,6 +4,8 @@ import Topbar from '../../Components/Topbar/Topbar'
 import Sidebar from '../../Components/Sidebar/Sidebar'
 import MobileSideMenu from '../../Components/Sidebar/MobileSideMenu'
 
+import Products from '../Product/Products/Products'
+
 import {Grid} from '@mui/material'
 
 import './Dashboard.css'
@@ -86,7 +88,7 @@ class Dashboard extends Component {
                         { this.renderSideBar() }
                     </Grid>
                     <Grid item xs = {12} sm = {9} md = {10}>
-                        
+                        <Products />
                     </Grid>
                 </Grid>
             </div>

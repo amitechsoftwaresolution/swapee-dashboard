@@ -1,0 +1,13 @@
+.product-page-root {
+    display: block;
+}
+
+.product-page-main-contents {
+    padding: 20px;
+}
+
+.product-list-block-root {
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+}
