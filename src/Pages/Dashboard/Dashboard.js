@@ -87,7 +87,7 @@ class Dashboard extends Component {
                     <Grid item xs = {0} sm = {3} md = {2} sx = {{display: {xs: 'none', md: 'block'}}}>
                         { this.renderSideBar() }
                     </Grid>
-                    <Grid item xs = {12} sm = {9} md = {10}>
+                    <Grid item xs = {12} sm = {9} md = {10} sx = {{marginTop: '9vh'}}>
                         <Products />
                     </Grid>
                 </Grid>

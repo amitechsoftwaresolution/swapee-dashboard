@@ -3,8 +3,9 @@
     height: 90vh;
     background-color: rgb(255, 255, 255);
     box-shadow: rgb(90 114 123 / 11%) 0px 7px 30px 0px;
-    position: fixed;
+    position: fixed !important;
     overflow-y: auto;
+    padding-top: 10vh;
 }
 
 .side-bar-info-container-root {
@@ -294,7 +295,7 @@
 }
 
 .side-bar-compo-root::-webkit-scrollbar {
-    width: 2px;
+    width: 0px;
 }
   
 .side-bar-compo-root::-webkit-scrollbar-track {

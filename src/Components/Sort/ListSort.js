@@ -4,14 +4,14 @@ import {Grid, Button} from '@mui/material'
 import KeyboardDoubleArrowRight from '@mui/icons-material/KeyboardDoubleArrowRight'
 import FilterAlt from '@mui/icons-material/FilterAlt'
 
-import SearchBarComponent from '../SearchBarComponent/SearchBarComponent'
+import SeondarySearchComponent from '../SearchBarComponent/SeondarySearchComponent'
 
 import './ListSort.css'
 
 const ListSort = ({title, count, searchValue, handleInputOnChange, handleSearchOnPress}) => {
     const renderListHeaderSearch = () => (
         <Grid item xs = {12} sm = {12} md = {6}>
-            <SearchBarComponent 
+            <SeondarySearchComponent 
                 placeholder = "Search"
                 name = "searchValue"
                 value = {searchValue}

@@ -4,6 +4,9 @@ import PageHeader from '../../../Components/PageHeader/PageHeader'
 import ListSort from '../../../Components/Sort/ListSort'
 import Filter from '../../../Components/Filter/Filter'
 import Paginator from '../../../Components/Paginator/Paginator'
+import Product from '../../../Components/Product/Product'
+
+import productsJson from '../../../Data/Json/products.json'
 
 import {Grid} from '@mui/material'
 
@@ -112,6 +115,7 @@ class Products extends Component {
         return (
             <Grid item xs = {12} sm = {12} md = {12}>
                 <div className = 'list-pagination-root'>
+                    <div className = 'rows-per-page'>Rows per page : 10</div>
                     <Paginator 
                         count = {total} 
                         page = {current} 
@@ -123,7 +127,19 @@ class Products extends Component {
     }
 
     renderList = () => {
-
+        return (
+            <div className = 'product_list-items-block-root'>
+                <Grid container spacing = {2}>
+                    { productsJson.map((item, idx) => {
+                        return (
+                            <Grid item xs = {6} sm = {6} md = {4} key = {idx}>
+                                <Product productData = {item} id = {idx}/>
+                            </Grid>
+                        )
+                    }) }
+                </Grid>
+            </div>
+        )
     }
 
     renderFilter = () => {
@@ -143,14 +159,11 @@ class Products extends Component {
     renderListBlock = () => {
         return (
             <Grid container spacing = {2}>
-                <Grid item xs = {12} sm = {5} md = {3}>
-                    { this.renderFilter() }
-                </Grid>
                 <Grid item xs = {12} sm = {7} md = {9}>
                     { this.renderList() }
-                    <div className = 'pagination-block-root'>
-                        { this.renderPagination() }
-                    </div>
+                </Grid>
+                <Grid item xs = {12} sm = {5} md = {3}>
+                    { this.renderFilter() }
                 </Grid>
             </Grid>
         )
@@ -175,7 +188,10 @@ class Products extends Component {
                 <PageHeader navs = {this.navs} />
                 <div className = 'product-list-block-root'>
                     { this.renderSort() }
-                    {/* { this.renderListBlock() } */}
+                    { this.renderListBlock() }
+                </div>
+                <div className = 'pagination-block-root'>
+                    { this.renderPagination() }
                 </div>
             </div>
         )
