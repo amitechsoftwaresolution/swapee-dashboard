@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import LoginForm from './LoginForm'
+import SnackBarAlert from '../../Components/SnackBarAlert/SnackBarAlert'
+import Loading from '../../Components/Loading/Loading'
 
 import './Login.css'
 
@@ -16,6 +18,10 @@ class Login extends Component {
         passwordType: "password"
     }
 
+    handleLogin = (data) => {
+        
+    }
+
     handleLoginOnClick = () => {
         const {email, password} = this.state
         if (email && password) {
@@ -25,6 +31,7 @@ class Login extends Component {
             }
             else {
                 const data = {email, password}
+                this.handleLogin(data)
             }
         }
         else {
@@ -49,6 +56,31 @@ class Login extends Component {
         this.setState({[name]: value})
     }
 
+    setErrorSnackBar = (message) => {
+        this.setSnackBar("error", message, true)
+    }
+
+    setSnackBar = (severity, message, openSnackBar) => {
+        this.setState({ severity, message, openSnackBar })
+    }
+
+    validateEmail = (email) => {
+        const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        return pattern.test(email)
+    }
+
+    renderSnackBar = () => {
+        const {openSnackBar, severity, message} = this.state
+        return (
+            <SnackBarAlert 
+                open = {openSnackBar} 
+                severity = {severity} 
+                message = {message} 
+                handleClose = {this.handleSnackBarClose}
+            />
+        )
+    }
+
     render() {
         const {openSnackBar, loading} = this.state
         return (
@@ -60,6 +92,8 @@ class Login extends Component {
                     handleCancelOnClick = {this.handleCancelOnClick}
                     handleLoginOnClick = {this.handleLoginOnClick}
                 />
+                { openSnackBar && this.renderSnackBar() }
+                { loading && <Loading open = {loading} /> }
             </div>
         )
     }

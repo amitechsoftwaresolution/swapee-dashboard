@@ -10,7 +10,7 @@ const LogoComponent = (props) => {
                 justifyContent:{xs:props.position} }} >
                 <AddShoppingCartIcon sx = {{m:{xs:1.5}, color: '#db5f51'}} />
                 <Typography 
-                    sx = {{mt:{xs:1, md:1}, margin:'12px 0 0 0', color: "#fff"}} 
+                    sx = {{mt:{xs:1, md:1}, margin:'12px 0 0 0', color: props.textColor ? props.textColor : "#fff"}} 
                     color = {props.textColor} 
                     variant = "h6" 
                     fontWeight = "fontWeightBold" 

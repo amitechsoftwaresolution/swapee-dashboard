@@ -4,12 +4,50 @@ import InputField from '../../Components/Input/InputField'
 import PasswordField from '../../Components/Input/PasswordField'
 import SignInButtonWidget from '../../Components/Button/ButtonWidget'
 import CancelButton from '../../Components/Button/SecodaryButtonWidget'
+import LogoComponent from '../../Components/LogoComponent/LogoComponent'
 
 import {Grid, Box} from '@mui/material'
+import InfoIcon from '@mui/icons-material/Info'
 
 import './Login.css'
 
 const LoginForm = ({state, handleInputOnChange, handleShowPasswordOnClick, handleCancelOnClick, handleLoginOnClick}) => {
+
+    const renderDummyCreds = () => {
+        return (
+            <div className = 'dummy-cred-container'>
+                <InfoIcon />
+                <div className = 'dummy-cred-values-root'>
+                    <span>Email:</span><strong>swapeeTest@gmail.com</strong> / 
+                    <span>Password:</span><strong>swapee12345</strong>
+                </div>
+            </div>
+        )
+    }
+
+    const renderFooterBottom = () => {
+        return (
+            <div className = "footer_bottom">
+                <div className = "footer_bottom_content_wrapper">
+                    <div className = "footer_bottom_copyrights">
+                        <p>
+                            Copyright © 2022/23 All rights reserved 
+                            | Designed by
+                            <span> AmiTech Software Solution </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    const renderRecoveryPassword = () => {
+        return (
+            <div className = 'recovery-password-root'>
+                <a href = "/" className = 'recovery-password-link'>Recovery password</a>
+            </div>
+        )
+    }
 
     const renderButtonFooter = () => {
         return (
@@ -56,17 +94,34 @@ const LoginForm = ({state, handleInputOnChange, handleShowPasswordOnClick, handl
         )
     }
 
+    const renderHeader = () => {
+        return (
+            <div className = 'login-form-header-container'>
+                <div className = 'login-logo-component'>
+                    <LogoComponent textColor = "#000" />
+                </div>
+                <div className = 'login-title-component'>
+                    <span>Login</span>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <Grid container>
             <Grid item xs = {1} sm = {2} md = {3} />
             <Grid item xs = {10} sm = {8} md = {6}>
                 <Box sx = {{my: 10, display: 'flex', flexDirection: 'column'}}>
                     <div className = 'login-form'>
+                        { renderHeader() }
+                        { renderDummyCreds() }
                         <div className = 'login-form-input-container'>
                             { renderInputField("email", "Email", "Email address") }
                             { renderPasswordField("password", "Password", "Password") }
+                            { renderRecoveryPassword() }
                             { renderButtonFooter() }
                         </div>
+                        { renderFooterBottom() }
                     </div>
                 </Box>
             </Grid>
