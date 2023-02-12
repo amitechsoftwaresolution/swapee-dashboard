@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 
+import {connect} from 'react-redux'
+
 import Topbar from '../../Components/Topbar/Topbar'
 import Sidebar from '../../Components/Sidebar/Sidebar'
 import MobileSideMenu from '../../Components/Sidebar/MobileSideMenu'
 
 import Products from '../Product/Products/Products'
+
+import {logout} from '../../Redux/Actions/authAction'
 
 import {Grid} from '@mui/material'
 
@@ -30,7 +34,7 @@ class Dashboard extends Component {
     }
 
     handleLogOut = () => {
-
+        this.props.signOut()
     }
 
     handleSubLinkOnClick = (index) => {
@@ -96,4 +100,14 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard
+const mapStateToProps = state => ({
+    authResponse: state.auth.authResponse
+})
+
+const mapDispatchToProps = dispatch => {
+    return {
+        signOut: () => { dispatch(logout()) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

@@ -1,5 +1,6 @@
 .product-page-root {
     display: block;
+    height: 100%;
 }
 
 .product-page-main-contents {

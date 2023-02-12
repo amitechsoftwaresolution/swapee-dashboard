@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
 
+import {connect} from 'react-redux'
+
 import LoginForm from './LoginForm'
 import SnackBarAlert from '../../Components/SnackBarAlert/SnackBarAlert'
 import Loading from '../../Components/Loading/Loading'
+
+import { storeLoginResponse } from '../../Redux/Actions/authAction'
 
 import './Login.css'
 
 class Login extends Component {
     state = {
-        email: "",
-        password: "",
+        email: "swapeeTest@gmail.com",
+        password: "swapee12345",
         message: "",
         severity: "",
         openSnackBar: false,
@@ -18,8 +22,24 @@ class Login extends Component {
         passwordType: "password"
     }
 
+    authResponse = {
+        email: "swapeeTest@gmail.com",
+        name: "Swapee",
+        token: "sff52df12a1sd251sdfwa3s5dZd5dz4d",
+        expiration: 12,
+        role: "ADMIN"
+    } // dummy auth response for ui design purpose
+
     handleLogin = (data) => {
-        
+        const {email, password} = data
+        if (email === "swapeeTest@gmail.com" && password === "swapee12345") {
+            const loginResponse = this.authResponse
+            this.props.storeLoginResponse(loginResponse)
+            this.setSuccessSnackBar("Login successfull")
+            window.location.href = "/dashboard"
+        } else {
+            this.setErrorSnackBar('Invalid credentials, please try again')
+        }
     }
 
     handleLoginOnClick = () => {
@@ -54,6 +74,10 @@ class Login extends Component {
     handleInputOnChange = (e) => {
         const {name, value} = e.target
         this.setState({[name]: value})
+    }
+
+    setSuccessSnackBar = (message) => {
+        this.setSnackBar("success", message, true)
     }
 
     setErrorSnackBar = (message) => {
@@ -99,4 +123,10 @@ class Login extends Component {
     }
 }
 
-export default Login
+const mapDispatchToProps = dispatch => {
+    return {
+        storeLoginResponse: data => { dispatch(storeLoginResponse(data)) }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Login)
