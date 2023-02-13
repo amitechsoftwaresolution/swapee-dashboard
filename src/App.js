@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+
+import Dashboard from './Pages/Dashboard/Dashboard'
+import Login from './Pages/Login/Login'
+import PageNotFound from './Pages/PageNotFound/PageNotFound'
+import ProtectedRoute from './Util/ProtectedRoute'
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route index = {true} path = "/" element = {<Login />} />
+        <Route path = "/dashboard"
+          element = {
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route path = "*" element = {<PageNotFound />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App

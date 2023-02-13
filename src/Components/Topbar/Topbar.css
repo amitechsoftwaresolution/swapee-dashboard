@@ -1,0 +1,65 @@
+.top-bar-compo-root {
+    width: 100%;
+    height: 10vh;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(90 114 123 / 11%) 0px 7px 30px 0px;
+    position: fixed;
+    z-index: 100;
+}
+
+.top-bar-compo-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.top-bar-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.setting-container {
+    margin-right: 25px;
+    position: relative;
+    appearance: none;
+    max-width: 100%;
+    font-family: Roboto, sans-serif;
+    font-size: 0.8125rem;
+    display: inline-flex;
+    justify-content: center;
+    white-space: nowrap;
+    outline: 0px;
+    text-decoration: none;
+    vertical-align: middle;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    border: 1px solid rgb(227, 242, 253);
+    color: rgb(33, 150, 243);
+    height: 48px;
+    align-items: center;
+    border-radius: 27px;
+    transition: all 0.2s ease-in-out 0s;
+    background-color: rgb(227, 242, 253);
+    flex-direction: row-reverse;
+}
+
+ .setting-container {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 12px;
+    padding-right: 12px;
+    white-space: nowrap;
+}
+
+.profile-icon {
+    margin-right: 15px;
+}
